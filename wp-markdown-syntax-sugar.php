@@ -35,10 +35,14 @@ add_filter('the_content_rss',   'process_markdown', 7);
 add_filter('get_the_excerpt',   'process_markdown', 7);
 
 function process_markdown( $text ) {
-    return preg_replace( '|<pre><code>#!([^\\n]+)\n(.*?)</code></pre>|se', 'process_language(\'$2\',\'$1\');', $text);
+    return preg_replace( '|<pre><code>#!([^\n]+)\n(.*?)</code></pre>|se', 'process_language(\'$2\',\'$1\');', $text);
 }
 
 function process_language( $code, $language) {
-    $code = stripslashes( trim( htmlspecialchars_decode( $code, ENT_NOQUOTES ) ) );
+    if(strcasecmp($language, 'xml') == 0) {
+        $code = stripslashes( trim( str_replace(array('&amp;', '&#039;', '&quot;'), array('&','\'','"'), $code) ) );
+    } else {
+        $code = stripslashes( trim( htmlspecialchars_decode( $code, ENT_NOQUOTES ) ) );
+    }
     return '<pre><code class="'. $language . '">' . $code . '</code></pre>';
 }
