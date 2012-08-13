@@ -30,15 +30,15 @@ License: GPLv2 or later
 */
 
 // Install filter to run after markdown (priority 6)
-add_filter('the_content',       'process_markdown', 7);
-add_filter('the_content_rss',   'process_markdown', 7);
-add_filter('get_the_excerpt',   'process_markdown', 7);
+add_filter('the_content',       'wmss_process_markdown', 7);
+add_filter('the_content_rss',   'wmss_process_markdown', 7);
+add_filter('get_the_excerpt',   'wmss_process_markdown', 7);
 
-function process_markdown( $text ) {
-    return preg_replace( '|<pre><code>#!([^\n]+)\n(.*?)</code></pre>|se', 'process_language(\'$2\',\'$1\');', $text);
+function wmss_process_markdown( $text ) {
+    return preg_replace( '|<pre><code>#!([^\n]+)\n(.*?)</code></pre>|se', 'wmss_process_language(\'$2\',\'$1\');', $text);
 }
 
-function process_language( $code, $language) {
+function wmss_process_language( $code, $language) {
     if(strcasecmp($language, 'xml') == 0) {
         $code = stripslashes( trim( str_replace(array('&amp;', '&#039;', '&quot;'), array('&','\'','"'), $code) ) );
     } else {
