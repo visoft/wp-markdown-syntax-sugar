@@ -1,16 +1,16 @@
 <?php
 /*
 Plugin Name: wp-markdown-syntax-sugar
-Plugin URI: http://www.visoftinc.com
+Plugin URI: https://github.com/visoft/wp-markdown-syntax-sugar
 Description: This WordPress plugin works to enhance the handling of code blocks in markdown syntax.
-Version: 0.1.0
+Version: 0.1.1
 Author: Damien White (Visoft, Inc.)
 Author URI: http://www.visoftinc.com
 License: GPLv2 or later
 */
 
 /*
-  Copyright 2012 Visoft, Inc. <info@visoftinc.com>
+  Copyright 2012-2013 Visoft, Inc. <info@visoftinc.com>
 
   This file is part of wp-markdown-syntax-sugar
 
@@ -44,5 +44,5 @@ function wmss_process_language( $code, $language) {
     } else {
         $code = stripslashes( trim( htmlspecialchars_decode( $code, ENT_NOQUOTES ) ) );
     }
-    return '<pre><code class="'. $language . '">' . $code . '</code></pre>';
+    return '<pre><code class="language-'. $language . '">' . $code . '</code></pre>';
 }
