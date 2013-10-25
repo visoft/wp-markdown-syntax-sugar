@@ -1,4 +1,4 @@
-WP Markdown Syntax Sugar work in conjunction with plugins such as [wp-markdown](http://wordpress.org/extend/plugins/wp-markdown/)
+WP Markdown Syntax Sugar works in conjunction with plugins such as [wp-markdown](http://wordpress.org/extend/plugins/wp-markdown/)
 and [wp-highlight.js](http://wordpress.org/extend/plugins/wp-highlightjs/). Markdown is fantastic markup for easily
 writing blogs, and [highlight.js](http://softwaremaniacs.org/soft/highlight/en/) is an extremely easy way to highlight
 code examples. In most cases, highlight.js automatically detects the proper language for a block of code. In certain
